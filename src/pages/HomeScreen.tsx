@@ -1,11 +1,15 @@
 import React from 'react'
 import tw from 'twrnc'
 import { fonts } from '../styles/csssheet'
-import { View, Text, Pressable, Alert } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 
-const Welcome = () => {
+interface NavigationProps {
+  navigation: any
+}
+
+const HomeScreen: React.FC<NavigationProps> = ({ navigation }) => {
   return (
-    <View style={tw`flex flex-col items-center`}>
+    <View style={tw`flex flex-col items-center justify-center h-full`}>
       <View>
         <Text style={[tw`-mb-3`, fonts.fontPoppinsLight]}>
           <Text style={[tw`text-zinc-600`, fonts.fontPoppinsMedium]}>VEOSCRIPT</Text> Presents
@@ -15,7 +19,7 @@ const Welcome = () => {
       <Pressable
         style={tw`w-[18rem] mt-2 p-3 rounded-lg bg-orange-500`}
         onPress={() => {
-          Alert.alert('You Clicked Start')
+          navigation.navigate('Diary', { name: 'Jerome Villaruel' })
         }}
       >
         <Text style={[tw`text-white text-[16px] text-center hover:bg-opacity-50`, fonts.fontPoppins]}>Start</Text>
@@ -24,4 +28,4 @@ const Welcome = () => {
   )
 }
 
-export default Welcome
+export default HomeScreen
