@@ -1,16 +1,27 @@
 import React from 'react'
-import Welcome from './src/pages/Welcome'
-import tw from 'twrnc'
-import { fonts } from './src/styles/csssheet'
-import { SafeAreaView, View } from 'react-native'
+import HomeScreen from './src/pages/HomeScreen'
+import DiaryScreen from './src/pages/DiaryScreen'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+const Stack = createNativeStackNavigator()
 
 const App = () => {
   return (
-    <SafeAreaView style={tw`flex items-center justify-center w-full h-full`}>
-      <View>
-        <Welcome />
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Diary"
+          component={DiaryScreen}
+          options={{ headerShown: true }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
