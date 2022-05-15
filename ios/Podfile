@@ -19,6 +19,7 @@ target 'DreamDiary' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+
   target 'DreamDiaryTests' do
     inherit! :complete
     # Pods for testing
