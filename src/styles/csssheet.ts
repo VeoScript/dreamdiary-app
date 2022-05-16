@@ -1,5 +1,11 @@
 import { StyleSheet } from 'react-native'
 
+export const customStyle = StyleSheet.create({
+  alignTop: {
+    textAlignVertical: 'top'
+  }
+})
+
 export const fonts = StyleSheet.create({
   fontPacifico: {
     fontFamily: 'Pacifico-Regular'

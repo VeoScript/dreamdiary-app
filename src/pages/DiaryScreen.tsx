@@ -18,6 +18,7 @@ const DiaryScreen: React.FC<NavigationProps> = ({ navigation, route }) => {
       />
       <View>
         <Text style={[tw`text-sm`, fonts.fontPoppins]}>This diary is created by {route.params.name}</Text>
+        <Text style={[tw`text-sm`, fonts.fontPoppins]}>{route.params.description}</Text>
       </View>
     </SafeAreaView>
   )
