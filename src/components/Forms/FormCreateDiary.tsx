@@ -3,7 +3,13 @@ import tw from 'twrnc'
 import { customStyle, fonts } from '../../styles/csssheet'
 import { useForm, Controller } from 'react-hook-form'
 import { Dropdown } from 'react-native-element-dropdown'
-import { ScrollView, View, Text, TextInput, TouchableOpacity, Alert } from 'react-native'
+import { ScrollView, View, Text, TextInput, TouchableOpacity } from 'react-native'
+
+import { getDBConnection, saveDiary } from '../../database/schema'
+
+interface IProps {
+  navigation: any
+}
 
 interface FormData {
   title: string
@@ -11,7 +17,7 @@ interface FormData {
   story: string
 }
 
-const FormCreateDiary = () => {
+const FormCreateDiary: React.FC<IProps> = ({ navigation }) => {
 
   const [dreamTypeValue, setDreamTypeValue] = React.useState(null)
   const [dreamTypeError, setDreamTypeError] = React.useState(false)
@@ -33,15 +39,25 @@ const FormCreateDiary = () => {
 
   const { control, handleSubmit, formState: { errors } } = useForm<FormData>({ defaultValues })
 
-  const onCreateDiary = (formData: FormData) => {
-    const dreamType = dreamTypeValue
+  const onCreateDiary = async (formData: FormData) => {
+    const dream_type = dreamTypeValue
     const title = formData.title
     const description = formData.description
     const story = formData.story
 
     if (dreamTypeValue === null) return setDreamTypeError(true)
 
-    Alert.alert("FormData", `Dream Type: ${ dreamType }, Title: ${ title }, Description: ${ description }, Story: ${ story }`)
+    const db = await getDBConnection()
+
+    await saveDiary(db, [{
+      date: String(new Date()),
+      dream_type: String(dream_type),
+      title: String(title),
+      description: String(description),
+      story: String(story)
+    }])
+
+    navigation.navigate('Home')
   }
 
   return (
