@@ -1,7 +1,7 @@
 import React from 'react'
 import HeaderPage from '../components/Headers/HeaderPage'
+import DiaryContent from '../layouts/DiaryContent'
 import tw from 'twrnc'
-import { fonts } from '../styles/csssheet'
 import { SafeAreaView, View, Text } from 'react-native'
 
 interface NavigationProps {
@@ -14,12 +14,12 @@ const DiaryScreen: React.FC<NavigationProps> = ({ navigation, route }) => {
     <SafeAreaView style={tw`flex flex-col h-full`}>
       <HeaderPage
         title={route.params.title}
+        dream_type={route.params.dream_type}
         navigation={navigation}
       />
-      <View>
-        <Text style={[tw`text-sm`, fonts.fontPoppins]}>This diary is created by {route.params.name}</Text>
-        <Text style={[tw`text-sm`, fonts.fontPoppins]}>{route.params.description}</Text>
-      </View>
+      <DiaryContent
+        route={route}
+      />
     </SafeAreaView>
   )
 }
