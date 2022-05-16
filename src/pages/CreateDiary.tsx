@@ -16,7 +16,9 @@ const CreateDiary: React.FC<NavigationProps> = ({ navigation, route }) => {
         title="Create Diary"
         navigation={navigation}
       />
-      <FormCreateDiary />
+      <FormCreateDiary
+        navigation={navigation}
+      />
     </SafeAreaView>
   )
 }
