@@ -33,6 +33,23 @@ const DiariesList: React.FC<IProps> = ({ navigation }) => {
 
   return (
     <React.Fragment>
+      {diaries.length === 0 && (
+        <View style={tw`flex flex-col items-center justify-center w-full h-[40rem]`}>
+          <View style={tw`mb-3`}>
+            <MaterialIcon name="auto-awesome" size="ultraLarge" color="#FB8500" />
+          </View>
+          <Text style={[tw`text-base text-[#023047] text-opacity-80 mb-3`, fonts.fontPoppinsLight]}>You don't have a diary yet.</Text>
+          <TouchableOpacity
+            style={tw`mr-3`}
+            activeOpacity={0.8}
+            onPress={() => {
+              navigation.push('CreateDiary', { name: 'Jerome Villaruel' })
+            }}
+          >
+            <Text style={[tw`p-3 rounded-md w-[15rem] text-center text-[#EAF5FB] bg-[#FB8500]`, fonts.fontPoppins]}>Create New</Text>
+          </TouchableOpacity>
+        </View>
+      )}
       {diaries.map((diary: any, i: number) => (
         <TouchableOpacity
           key={i}
@@ -52,9 +69,31 @@ const DiariesList: React.FC<IProps> = ({ navigation }) => {
           <View style={tw`flex flex-col w-[18rem]`}>
             <View style={tw`flex flex-row items-center`}>
               <Text style={[tw`text-[20px] text-[#023047] mr-2`, fonts.fontPoppinsBold]}>{ diary.title }</Text>
-              <View style={[tw`flex flex-row items-center justify-center w-auto px-2 py-1 rounded-md bg-[#FFB703]`]}>
-                <Text style={[tw`text-[10px] text-[#023047]`, fonts.fontPoppinsLight]}>{ diary.dream_type }</Text>
-              </View>
+              {diary.dream_type === 'Normal Dream' && (
+                <View style={[tw`flex flex-row items-center justify-center w-auto px-2 py-1 rounded-md bg-[#8ECAE6]`]}>
+                  <Text style={[tw`text-[10px] text-[#023047]`, fonts.fontPoppinsLight]}>{ diary.dream_type }</Text>
+                </View>
+              )}
+              {diary.dream_type === 'Day Dream' && (
+                <View style={[tw`flex flex-row items-center justify-center w-auto px-2 py-1 rounded-md bg-[#FFB703]`]}>
+                  <Text style={[tw`text-[10px] text-[#023047]`, fonts.fontPoppinsLight]}>{ diary.dream_type }</Text>
+                </View>
+              )}
+              {diary.dream_type === 'Lucid Dream' && (
+                <View style={[tw`flex flex-row items-center justify-center w-auto px-2 py-1 rounded-md bg-[#023047]`]}>
+                  <Text style={[tw`text-[10px] text-[#EAF5FB]`, fonts.fontPoppinsLight]}>{ diary.dream_type }</Text>
+                </View>
+              )}
+              {diary.dream_type === 'False Awakening Dream' && (
+                <View style={[tw`flex flex-row items-center justify-center w-auto px-2 py-1 rounded-md bg-[#FC3030]`]}>
+                  <Text style={[tw`text-[10px] text-[#EAF5FB]`, fonts.fontPoppinsLight]}>{ diary.dream_type }</Text>
+                </View>
+              )}
+              {diary.dream_type === 'Nightmares' && (
+                <View style={[tw`flex flex-row items-center justify-center w-auto px-2 py-1 rounded-md bg-[#1E1E1E]`]}>
+                  <Text style={[tw`text-[10px] text-[#EAF5FB]`, fonts.fontPoppinsLight]}>{ diary.dream_type }</Text>
+                </View>
+              )}
             </View>
             <Text style={[tw`text-[16px] text-[#023047]`, fonts.fontPoppinsLight]}>{ diary.description }</Text>
             <Text style={[tw`text-[10px] text-[#023047]`, fonts.fontPoppinsLight]}>{moment(new Date(diary.date)).fromNow()}</Text>
