@@ -2,7 +2,7 @@ import React from 'react'
 import HeaderPage from '../components/Headers/HeaderPage'
 import DiaryContent from '../layouts/DiaryContent'
 import tw from 'twrnc'
-import { SafeAreaView, View, Text } from 'react-native'
+import { SafeAreaView } from 'react-native'
 
 interface NavigationProps {
   navigation: any

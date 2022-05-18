@@ -23,11 +23,10 @@ const FormCreateDiary: React.FC<IProps> = ({ navigation }) => {
   const [dreamTypeError, setDreamTypeError] = React.useState(false)
 
   const dreamTypes = [
-    { label: 'Normal Dreams', value: 'Normal Dreams' },
-    { label: 'Day Dreams', value: 'Day Dreams' },
-    { label: 'Vivid Dream', value: 'Vivid Dream' },
+    { label: 'Normal Dream', value: 'Normal Dream' },
+    { label: 'Day Dream', value: 'Day Dream' },
     { label: 'Lucid Dream', value: 'Lucid Dream' },
-    { label: 'False Awakening Dreams', value: 'False Awakening Dreams' },
+    { label: 'False Awakening Dream', value: 'False Awakening Dream' },
     { label: 'Nightmares', value: 'Nightmares' }
   ];
 
@@ -63,8 +62,12 @@ const FormCreateDiary: React.FC<IProps> = ({ navigation }) => {
   return (
     <ScrollView style={tw`flex flex-col p-3`}>
       <View style={tw`flex flex-col mb-2`}>
+        <Text style={[tw`text-xl text-[#023047]`, fonts.fontPoppinsBold]}>Tell Us</Text>
+        <Text style={[tw`text-sm text-[#023047]`, fonts.fontPoppinsLight]}>Share your experience regarding to your dream.</Text>
+      </View>
+      <View style={tw`flex flex-col mb-2`}>
         <Dropdown
-          style={tw`p-2 rounded-md text-base bg-[#FFFFFF]`}
+          style={tw`p-2 rounded-md text-base border border-[#023047] bg-[#FFFFFF]`}
           placeholderStyle={[tw`text-base text-zinc-400`, fonts.fontPoppins]}
           selectedTextStyle={[tw`text-base text-[#023047]`, fonts.fontPoppins]}
           data={dreamTypes}
@@ -89,7 +92,7 @@ const FormCreateDiary: React.FC<IProps> = ({ navigation }) => {
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              style={[tw`p-3 rounded-md text-base text-[#023047] bg-[#FFFFFF]`, fonts.fontPoppins]}
+              style={[tw`p-3 rounded-md text-base text-[#023047] border border-[#023047] bg-[#FFFFFF]`, fonts.fontPoppins]}
               placeholder="Title"
               keyboardType="default"
               onBlur={onBlur}
@@ -109,7 +112,7 @@ const FormCreateDiary: React.FC<IProps> = ({ navigation }) => {
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              style={[tw`px-3 rounded-md text-base text-[#023047] bg-[#FFFFFF]`, fonts.fontPoppins, customStyle.alignTop]}
+              style={[tw`px-3 rounded-md text-base text-[#023047] border border-[#023047] bg-[#FFFFFF]`, fonts.fontPoppins, customStyle.alignTop]}
               placeholder="Description"
               numberOfLines={4}
               onBlur={onBlur}
@@ -129,7 +132,7 @@ const FormCreateDiary: React.FC<IProps> = ({ navigation }) => {
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              style={[tw`p-3 rounded-md text-base text-[#023047] bg-[#FFFFFF]`, fonts.fontPoppins, customStyle.alignTop]}
+              style={[tw`p-3 rounded-md text-base text-[#023047] border border-[#023047] bg-[#FFFFFF]`, fonts.fontPoppins, customStyle.alignTop]}
               placeholder="Type here your story today..."
               numberOfLines={10}
               multiline={true}
@@ -142,7 +145,7 @@ const FormCreateDiary: React.FC<IProps> = ({ navigation }) => {
         {errors.story && <Text style={tw`mt-1 text-xs text-red-500`}>Story is required.</Text>}
       </View>
       <TouchableOpacity
-        style={tw`flex flex-row justify-center p-3 rounded-md bg-[#023047]`}
+        style={tw`flex flex-row justify-center p-3 rounded-md bg-[#FB8500]`}
         onPress={handleSubmit(onCreateDiary)}
         activeOpacity={0.8}
       >
