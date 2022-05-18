@@ -11,7 +11,7 @@ interface IProps {
 const DiaryContent: React.FC<IProps> = ({ route }) => {
   return (
     <ScrollView style={tw`p-5`}>
-      <View style={tw`flex flex-col items-start mb-10`}>
+      <View style={tw`flex flex-col items-start mb-6`}>
         <Text style={[tw`text-3xl text-[#FB8500]`, fonts.fontPoppinsBlack]}>{route.params.title}</Text>
         <Text style={[tw`text-[18px] text-[#023047]`, fonts.fontPoppinsSemiBold]}>{route.params.description}</Text>
       </View>
