@@ -85,7 +85,7 @@ const DiariesList: React.FC<IProps> = ({ navigation }) => {
         <React.Fragment key={i}>
           {diary.archive === 'false' && (
             <TouchableOpacity
-              style={tw`flex flex-row items-center justify-between px-3 py-2 bg-[#DDEFF9] border-b border-[#BEE1F3]`}
+              style={tw`flex flex-row items-center justify-between px-3 py-2 border-b border-[#BEE1F3] bg-[#DDEFF9]`}
               activeOpacity={0.8}
               onPress={() => {
                 navigation.push('Diary', {
@@ -128,7 +128,7 @@ const DiariesList: React.FC<IProps> = ({ navigation }) => {
                     </View>
                   )}
                 </View>
-                <Text style={[tw`text-[16px] text-[#023047]`, fonts.fontPoppinsLight]}>{ diary.description }</Text>
+                <Text style={[tw`text-[13px] text-[#023047]`, fonts.fontPoppinsLight]}>{ diary.description }</Text>
                 <Text style={[tw`text-[10px] text-[#023047]`, fonts.fontPoppinsLight]}>{moment(new Date(diary.date)).fromNow()}</Text>
               </View>
               <TouchableOpacity

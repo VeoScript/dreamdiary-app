@@ -23,7 +23,7 @@ const Header: React.FC<IProps> = ({ title, dream_type, navigation }) => {
         >
           <MaterialIcon name="chevron-left" size="large" color="#EAF5FB" />
         </TouchableOpacity>
-        <Text style={[tw`text-[20px] text-[#EAF5FB]`, fonts.fontPoppinsBold]}>{ title }</Text>
+        <Text style={[tw`mt-1 text-[18px] text-[#EAF5FB]`, fonts.fontPoppinsBold]}>{ title }</Text>
       </View>
       {dream_type && (
         <View style={[tw`flex flex-row items-center justify-center w-auto px-2 py-1 rounded-md bg-[#FFB703]`]}>

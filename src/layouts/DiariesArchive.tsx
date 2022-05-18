@@ -73,7 +73,7 @@ const DiariesList: React.FC<IProps> = ({ navigation }) => {
         <React.Fragment key={i}>
           {diary.archive === 'true' && (
             <TouchableOpacity
-              style={tw`flex flex-row items-center justify-between px-3 py-2 bg-[#DDEFF9] border-b border-[#BEE1F3]`}
+              style={tw`flex flex-row items-center justify-between px-3 py-2 border-b border-[#BEE1F3] bg-[#DDEFF9]`}
               activeOpacity={0.8}
               onPress={() => {
                 navigation.push('Diary', {

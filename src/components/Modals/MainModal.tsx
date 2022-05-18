@@ -26,7 +26,7 @@ const MainModal: React.FC<IProps> = ({ navigation, modalData, modalVisible, setM
       }}
     >
       <View style={tw`flex flex-row items-center justify-center h-full bg-[#023047] bg-opacity-50`}>
-        <View style={tw`flex flex-col items-center w-[20rem] rounded-xl overflow-hidden bg-[#DDEFF9]`}>
+        <View style={tw`flex flex-col items-center w-[20rem] rounded-xl overflow-hidden bg-[#BEE1F3]`}>
           <View style={tw`flex flex-row items-center justify-between px-5 py-3`}>
             <Text style={[tw`w-full text-left text-xl text-[#023047]`, fonts.fontPoppinsBold]}>{ modalData.title }</Text>
             <Pressable
@@ -37,7 +37,7 @@ const MainModal: React.FC<IProps> = ({ navigation, modalData, modalVisible, setM
           </View>
           <TouchableOpacity
             activeOpacity={0.8}
-            style={tw`w-full p-4 border-t border-b border-[#8ECAE6] bg-[#BEE1F3]`}
+            style={tw`w-full p-4 border-t border-b border-[#8ECAE6] bg-[#DDEFF9]`}
             onPress={() => {
               setModalVisible(false)
               navigation.navigate('EditDiary', modalData)
@@ -48,7 +48,7 @@ const MainModal: React.FC<IProps> = ({ navigation, modalData, modalVisible, setM
           {modalData.archive === 'false' && (
             <TouchableOpacity
               activeOpacity={0.8}
-              style={tw`w-full p-4 border-b border-[#8ECAE6] bg-[#BEE1F3]`}
+              style={tw`w-full p-4 border-b border-[#8ECAE6] bg-[#DDEFF9]`}
               onPress={async () => {
                 setToastMessage('Saved to archive')
                 setModalVisible(false)
@@ -64,7 +64,7 @@ const MainModal: React.FC<IProps> = ({ navigation, modalData, modalVisible, setM
           {modalData.archive === 'true' && (
             <TouchableOpacity
               activeOpacity={0.8}
-              style={tw`w-full p-4 border-b border-[#8ECAE6] bg-[#BEE1F3]`}
+              style={tw`w-full p-4 border-b border-[#8ECAE6] bg-[#DDEFF9]`}
               onPress={async () => {
                 setToastMessage('Remove to archive')
                 setModalVisible(false)
@@ -78,7 +78,7 @@ const MainModal: React.FC<IProps> = ({ navigation, modalData, modalVisible, setM
               <Text style={[tw`text-base text-[#023047]`, fonts.fontPoppins]}>Unarchive</Text>
             </TouchableOpacity>
           )}
-          <View style={tw`flex flex-row items-center justify-between px-4 py-1 bg-[#FFFFFF]`}>
+          <View style={tw`flex flex-row items-center justify-between px-4 py-2 bg-[#FFFFFF]`}>
             <Text style={[tw`w-full text-left text-xs text-[#023047]`, fonts.fontPoppinsLight]}>
               Delete permanently?
               This cannot be undone.
@@ -86,7 +86,7 @@ const MainModal: React.FC<IProps> = ({ navigation, modalData, modalVisible, setM
           </View>
           <TouchableOpacity
             activeOpacity={0.8}
-            style={tw`w-full p-4 border-b border-[#FD5757] bg-[#FD7171]`}
+            style={tw`w-full p-4 border-b border-[#FD5757] bg-[#FD8A8A]`}
             onPress={async () => {
               setToastMessage('Deleted Successfully')
               setModalVisible(false)
