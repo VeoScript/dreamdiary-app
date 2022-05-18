@@ -1,6 +1,7 @@
 import React from 'react'
 import HomeScreen from './src/pages/HomeScreen'
 import AboutScreen from './src/pages/AboutScreen'
+import ArchiveScreen from './src/pages/ArchiveScreen'
 import DiaryScreen from './src/pages/DiaryScreen'
 import CreateDiaryScreen from './src/pages/CreateDiaryScreen'
 import EditDiaryScreen from './src/pages/EditDiaryScreen'
@@ -21,6 +22,11 @@ const App = () => {
         <Stack.Screen
           name="About"
           component={AboutScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Archive"
+          component={ArchiveScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
