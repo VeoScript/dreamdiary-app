@@ -24,6 +24,15 @@ const Header: React.FC<IProps> = ({ title, navigation }) => {
           <MaterialIcon name="add" size="large" color="#EAF5FB" />
         </TouchableOpacity>
         <TouchableOpacity
+          style={tw`mr-2`}
+          activeOpacity={0.8}
+          onPress={() => {
+            navigation.push('About')
+          }}
+        >
+          <MaterialIcon name="archive" size="large" color="#EAF5FB" />
+        </TouchableOpacity>
+        <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => {
             navigation.push('About')

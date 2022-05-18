@@ -3,6 +3,7 @@ import HomeScreen from './src/pages/HomeScreen'
 import AboutScreen from './src/pages/AboutScreen'
 import DiaryScreen from './src/pages/DiaryScreen'
 import CreateDiaryScreen from './src/pages/CreateDiaryScreen'
+import EditDiaryScreen from './src/pages/EditDiaryScreen'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
@@ -30,6 +31,11 @@ const App = () => {
         <Stack.Screen
           name="CreateDiary"
           component={CreateDiaryScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EditDiary"
+          component={EditDiaryScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

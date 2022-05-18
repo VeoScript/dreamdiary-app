@@ -51,6 +51,7 @@ const DiariesList: React.FC<IProps> = ({ navigation }) => {
         message={toastMessage}
       />
       <MainModal
+        navigation={navigation}
         modalData={modalData}
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}

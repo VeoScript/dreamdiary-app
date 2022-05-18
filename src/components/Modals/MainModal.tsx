@@ -7,6 +7,7 @@ import { View, Modal, Pressable, TouchableOpacity, Text } from 'react-native'
 import { getDBConnection, deleteDiary } from '../../database/schema'
 
 interface IProps {
+  navigation: any
   modalData: any
   modalVisible: any
   setModalVisible: any
@@ -14,7 +15,7 @@ interface IProps {
   setToastMessage: any
 }
 
-const MainModal: React.FC<IProps> = ({ modalData, modalVisible, setModalVisible, setVisibleToast, setToastMessage }) => {
+const MainModal: React.FC<IProps> = ({ navigation, modalData, modalVisible, setModalVisible, setVisibleToast, setToastMessage }) => {
   return (
     <Modal
       animationType="slide"
@@ -39,8 +40,7 @@ const MainModal: React.FC<IProps> = ({ modalData, modalVisible, setModalVisible,
             style={tw`w-full p-4 border-t border-b border-[#8ECAE6] bg-[#BEE1F3]`}
             onPress={() => {
               setModalVisible(false)
-              setVisibleToast(true)
-              setToastMessage('Edit')
+              navigation.navigate('EditDiary', modalData)
             }}
           >
             <Text style={[tw`text-base text-[#023047]`, fonts.fontPoppins]}>Edit</Text>
