@@ -27,7 +27,7 @@ const Header: React.FC<IProps> = ({ title, navigation }) => {
           style={tw`mr-2`}
           activeOpacity={0.8}
           onPress={() => {
-            navigation.push('About')
+            navigation.push('Archive')
           }}
         >
           <MaterialIcon name="archive" size="large" color="#EAF5FB" />

@@ -8,7 +8,7 @@ import { MaterialIcon } from '../components/Icons'
 import { View, Text, TouchableOpacity, Alert } from 'react-native'
 
 import { DiariesModel } from '../database/models'
-import { getDBConnection, createTable, getDiary } from '../database/schema'
+import { getDBConnection, createTable, getDiary, archiveDiary } from '../database/schema'
 
 interface IProps {
   navigation: any
@@ -40,15 +40,12 @@ const DiariesList: React.FC<IProps> = ({ navigation }) => {
   }, [])
 
   React.useEffect(() => {
-    setInterval(() => loadDataCallback(), 1000) // refresh data from database (for realtime function)
+    loadDataCallback() // fetch the data from database
     setVisibleToast(false) // automatically hide the toast display
-    return () => {
-      setDiaries([])
-    }
-  }, [loadDataCallback, setDiaries, visibleToast])
+  }, [loadDataCallback, visibleToast])
 
   // get the archive diaries
-  const getUnarchivesDiary = diaries.filter((diary: { archive: string }) => diary.archive === 'false')
+  const getArchivesDiary = diaries.filter((diary: { archive: string }) => diary.archive === 'true')
 
   return (
     <React.Fragment>
@@ -64,26 +61,17 @@ const DiariesList: React.FC<IProps> = ({ navigation }) => {
         setVisibleToast={setVisibleToast}
         setToastMessage={setToastMessage}      
       />
-      {(diaries.length === 0 || getUnarchivesDiary.length === 0 ) && (
+      {getArchivesDiary.length === 0 && (
         <View style={tw`flex flex-col items-center justify-center w-full h-[40rem]`}>
           <View style={tw`mb-3`}>
-            <MaterialIcon name="auto-awesome" size="ultraLarge" color="#FB8500" />
+            <MaterialIcon name="archive" size="ultraLarge" color="#FB8500" />
           </View>
-          <Text style={[tw`text-base text-[#023047] text-opacity-80 mb-3`, fonts.fontPoppinsLight]}>You don't have a diary yet.</Text>
-          <TouchableOpacity
-            style={tw`mr-3`}
-            activeOpacity={0.8}
-            onPress={() => {
-              navigation.push('CreateDiary', { name: 'Jerome Villaruel' })
-            }}
-          >
-            <Text style={[tw`p-3 rounded-md w-[15rem] text-center text-[#EAF5FB] bg-[#FB8500]`, fonts.fontPoppins]}>Create New</Text>
-          </TouchableOpacity>
+          <Text style={[tw`text-base text-[#023047] text-opacity-80 mb-3`, fonts.fontPoppinsLight]}>You don't have archive diary.</Text>
         </View>
       )}
       {diaries.map((diary: any, i: number) => (
         <React.Fragment key={i}>
-          {diary.archive === 'false' && (
+          {diary.archive === 'true' && (
             <TouchableOpacity
               style={tw`flex flex-row items-center justify-between px-3 py-2 bg-[#DDEFF9] border-b border-[#BEE1F3]`}
               activeOpacity={0.8}

@@ -19,7 +19,8 @@ export const createTable = async (db: SQLiteDatabase) => {
         dream_type TEXT NOT NULL,
         title TEXT NOT NULL,
         description TEXT NOT NULL,
-        story TEXT NOT NULL
+        story TEXT NOT NULL,
+        archive TEXT DEFAULT "false" NOT NULL
     );`
 
   await db.executeSql(query)
@@ -36,7 +37,7 @@ export const deleteTable = async (db: SQLiteDatabase) => {
 export const getDiary = async (db: SQLiteDatabase): Promise<DiariesModel[]> => {
   try {
     const diariesModel: DiariesModel[] = [];
-    const results = await db.executeSql(`SELECT id, date, dream_type, title, description, story FROM ${tableDiary} ORDER BY id DESC`);
+    const results = await db.executeSql(`SELECT id, date, dream_type, title, description, story, archive FROM ${tableDiary} ORDER BY id DESC`);
     results.forEach(result => {
       for (let index = 0; index < result.rows.length; index++) {
         diariesModel.push(result.rows.item(index))
@@ -72,6 +73,16 @@ export const updateDiary = async (db: SQLiteDatabase, id: number, diariesModel: 
     + `WHERE id=${id}`;
 
   return db.executeSql(updateQuery);
+}
+
+export const archiveDiary = async (db: SQLiteDatabase, id: number) => {
+  const updateQuery = `UPDATE ${tableDiary} SET archive='true' WHERE id=${id}`;
+  await db.executeSql(updateQuery);
+}
+
+export const unArchiveDiary = async (db: SQLiteDatabase, id: number) => {
+  const updateQuery = `UPDATE ${tableDiary} SET archive='false' WHERE id=${id}`;
+  await db.executeSql(updateQuery);
 }
 
 export const deleteDiary = async (db: SQLiteDatabase, id: number) => {

@@ -5,4 +5,5 @@ export type DiariesModel = {
   title: string
   description: string
   story: string
+  archive: string
 }
