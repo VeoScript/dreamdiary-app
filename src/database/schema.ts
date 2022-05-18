@@ -61,7 +61,20 @@ export const saveDiary = async (db: SQLiteDatabase, diariesModel: DiariesModel[]
   return db.executeSql(insertQuery);
 }
 
+export const updateDiary = async (db: SQLiteDatabase, id: number, diariesModel: DiariesModel[]) => {
+  // this function is for accepting the single quotes to sql
+  const convertSingleQuotes = (str: string) => {
+    return str.replace(/\'/g,"''")
+  }
+  const updateQuery =
+    `UPDATE ${tableDiary} SET ` +
+    diariesModel.map(i => `date='${i.date}', dream_type='${i.dream_type}', title='${convertSingleQuotes(i.title)}', description='${convertSingleQuotes(i.description)}', story='${convertSingleQuotes(i.story)}'`)
+    + `WHERE id=${id}`;
+
+  return db.executeSql(updateQuery);
+}
+
 export const deleteDiary = async (db: SQLiteDatabase, id: number) => {
-  const deleteQuery = `DELETE from ${tableDiary} where id = ${id}`;
+  const deleteQuery = `DELETE FROM ${tableDiary} WHERE id=${id}`;
   await db.executeSql(deleteQuery);
 }
