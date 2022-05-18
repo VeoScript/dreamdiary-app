@@ -13,7 +13,7 @@ const EditDiaryScreen: React.FC<NavigationProps> = ({ navigation, route }) => {
   return (
     <SafeAreaView style={tw`flex flex-col h-full`}>
       <HeaderPage
-        title={`Edit ${ route.params.title }`}
+        title="Edit Diary"
         navigation={navigation}
       />
       <FormEditDiary

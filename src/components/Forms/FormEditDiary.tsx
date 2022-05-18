@@ -64,7 +64,7 @@ const FormEditDiary: React.FC<IProps> = ({ navigation, diaryData }) => {
   return (
     <ScrollView style={tw`flex flex-col p-3`}>
       <View style={tw`flex flex-col mb-2`}>
-        <Text style={[tw`text-xl text-[#023047]`, fonts.fontPoppinsBold]}>Edit</Text>
+        <Text style={[tw`text-xl text-[#023047]`, fonts.fontPoppinsBold]}>Diary: { diaryData.title }</Text>
         <Text style={[tw`text-sm text-[#023047]`, fonts.fontPoppinsLight]}>Change anything about your dreams.</Text>
       </View>
       <View style={tw`flex flex-col mb-2`}>
@@ -151,7 +151,7 @@ const FormEditDiary: React.FC<IProps> = ({ navigation, diaryData }) => {
         onPress={handleSubmit(onCreateDiary)}
         activeOpacity={0.8}
       >
-        <Text style={[tw`text-[#EAF5FB] text-base`, fonts.fontPoppins]}>Save</Text>
+        <Text style={[tw`text-[#EAF5FB] text-base`, fonts.fontPoppins]}>Update</Text>
       </TouchableOpacity>
     </ScrollView>
   )
