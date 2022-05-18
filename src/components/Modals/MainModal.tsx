@@ -4,7 +4,7 @@ import { fonts } from '../../styles/csssheet'
 import { MaterialIcon } from '../../components/Icons'
 import { View, Modal, Pressable, TouchableOpacity, Text } from 'react-native'
 
-import { getDBConnection, deleteDiary } from '../../database/schema'
+import { getDBConnection, archiveDiary, unArchiveDiary, deleteDiary } from '../../database/schema'
 
 interface IProps {
   navigation: any
@@ -45,17 +45,39 @@ const MainModal: React.FC<IProps> = ({ navigation, modalData, modalVisible, setM
           >
             <Text style={[tw`text-base text-[#023047]`, fonts.fontPoppins]}>Edit</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            style={tw`w-full p-4 border-b border-[#8ECAE6] bg-[#BEE1F3]`}
-            onPress={() => {
-              setModalVisible(false)
-              setVisibleToast(true)
-              setToastMessage('Archive')
-            }}
-          >
-            <Text style={[tw`text-base text-[#023047]`, fonts.fontPoppins]}>Archive</Text>
-          </TouchableOpacity>
+          {modalData.archive === 'false' && (
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={tw`w-full p-4 border-b border-[#8ECAE6] bg-[#BEE1F3]`}
+              onPress={async () => {
+                setToastMessage('Saved to archive')
+                setModalVisible(false)
+                setVisibleToast(true)
+                const id = modalData.id
+                const db = await getDBConnection()
+                await archiveDiary(db, id)
+              }}
+            >
+              <Text style={[tw`text-base text-[#023047]`, fonts.fontPoppins]}>Archive</Text>
+            </TouchableOpacity>
+          )}
+          {modalData.archive === 'true' && (
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={tw`w-full p-4 border-b border-[#8ECAE6] bg-[#BEE1F3]`}
+              onPress={async () => {
+                setToastMessage('Remove to archive')
+                setModalVisible(false)
+                setVisibleToast(true)
+                const id = modalData.id
+                const db = await getDBConnection()
+                await unArchiveDiary(db, id)
+                navigation.push('Home')
+              }}
+            >
+              <Text style={[tw`text-base text-[#023047]`, fonts.fontPoppins]}>Unarchive</Text>
+            </TouchableOpacity>
+          )}
           <View style={tw`flex flex-row items-center justify-between px-4 py-1 bg-[#FFFFFF]`}>
             <Text style={[tw`w-full text-left text-xs text-[#023047]`, fonts.fontPoppinsLight]}>
               Delete permanently?
@@ -66,11 +88,11 @@ const MainModal: React.FC<IProps> = ({ navigation, modalData, modalVisible, setM
             activeOpacity={0.8}
             style={tw`w-full p-4 border-b border-[#FD5757] bg-[#FD7171]`}
             onPress={async () => {
+              setToastMessage('Deleted Successfully')
+              setModalVisible(false)
               const id = modalData.id
               const db = await getDBConnection()
               await deleteDiary(db, id)
-              setModalVisible(false)
-              setToastMessage('Deleted Successfully')
             }}
           >
             <Text style={[tw`text-base text-[#023047]`, fonts.fontPoppins]}>Delete</Text>
