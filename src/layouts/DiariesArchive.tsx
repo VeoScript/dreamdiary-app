@@ -5,10 +5,10 @@ import moment from 'moment'
 import tw from 'twrnc'
 import { fonts } from '../styles/csssheet'
 import { MaterialIcon } from '../components/Icons'
-import { View, Text, TouchableOpacity, Alert } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 
 import { DiariesModel } from '../database/models'
-import { getDBConnection, createTable, getDiary, archiveDiary } from '../database/schema'
+import { getDBConnection, createTable, getDiary } from '../database/schema'
 
 interface IProps {
   navigation: any
@@ -45,7 +45,7 @@ const DiariesList: React.FC<IProps> = ({ navigation }) => {
   }, [loadDataCallback, visibleToast])
 
   // get the archive diaries
-  const getArchivesDiary = diaries.filter((diary: { archive: string }) => diary.archive === 'true')
+  const getArchivesDiary = diaries.filter((diary) => diary.archive === 'true')
 
   return (
     <React.Fragment>
