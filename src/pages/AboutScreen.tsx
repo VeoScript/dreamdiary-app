@@ -34,14 +34,14 @@ const AboutScreen: React.FC<NavigationProps> = ({ navigation }) => {
           </View>
           <View style={tw`flex flex-col items-center`}>
             <Text style={[tw`text-center text-base text-[#333333] mb-2`, fonts.fontPoppins]}>
-              DreamDiary® is a personal diary of your dreams, so that your dreams will always be remember and also helping your mental health.
+              DreamDiary® is a personal diary of your dreams so that your dreams will always be remembered and help your mental health.
             </Text>
             <Text style={[tw`text-center text-base text-[#333333] mb-2`, fonts.fontPoppins]}>
-              Your dreams are captured your life.
-              Write your dreams in one place, so you won't forget.
+              Your dreams are captured in your life.
+              Write your dreams in one place so that you won't forget.
             </Text>
             <Text style={[tw`text-center text-base text-[#333333] mb-2`, fonts.fontPoppins]}>
-              Your data will stored to your local devices. Be careful for deleting this app data.
+              Your data will be stored on your local devices. Be careful about deleting this app data.
               It will cause permanent loss of your diaries.
             </Text>
           </View>
@@ -56,7 +56,7 @@ const AboutScreen: React.FC<NavigationProps> = ({ navigation }) => {
           <View style={tw`flex flex-col items-center`}>
             <Text style={[tw`text-center text-base text-[#333333] mb-2`, fonts.fontPoppins]}>
               This app is dedicated to the person who has depression or anxiety.
-              I will continue to add some features to this app for the better user experience.
+              I will continue to add some features to this app for a better user experience.
             </Text>
             <Text style={[tw`text-center text-base text-[#333333] mb-2`, fonts.fontPoppins]}>
               Proudly created with ❤️ by VEOSCRIPT.
