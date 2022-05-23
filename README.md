@@ -9,4 +9,4 @@ and also helping your mental health. Write your dreams in one place, so you won'
 
 ## Download the App
 
-> Dream Diary APK - [Download Here](https://bit.ly/3wLRppU)
+> Dream Diary APK - [Download Here](https://bit.ly/dreamdiaryapp)
