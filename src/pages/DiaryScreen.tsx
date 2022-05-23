@@ -16,6 +16,7 @@ const DiaryScreen: React.FC<NavigationProps> = ({ navigation, route }) => {
         title={route.params.title}
         dream_type={route.params.dream_type}
         navigation={navigation}
+        diaryData={route.params}
       />
       <DiaryContent
         route={route}
