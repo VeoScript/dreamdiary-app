@@ -1,9 +1,11 @@
-# Dream Diary
+<p align="center">
+  <img width= '500' src=".github/dreamdiary-bg.png">
+</p>
+
+## About App
 
 DreamDiary® is a personal diary of your dreams, so that your dreams will always be remember
-and also helping your mental health.
-
-Your dreams are captured your life. Write your dreams in one place, so you won't forget.
+and also helping your mental health. Write your dreams in one place, so you won't forget.
 
 ## Download the App
 
