@@ -7,12 +7,18 @@ import CreateDiaryScreen from './src/pages/CreateDiaryScreen'
 import EditDiaryScreen from './src/pages/EditDiaryScreen'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { StatusBar } from 'react-native'
 
 const Stack = createNativeStackNavigator()
 
 const App = () => {
   return (
     <NavigationContainer>
+      <StatusBar
+        animated={true}
+        backgroundColor="#023047"
+        barStyle="light-content"
+      />
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
