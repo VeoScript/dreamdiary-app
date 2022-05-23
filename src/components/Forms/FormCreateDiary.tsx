@@ -89,7 +89,8 @@ const FormCreateDiary: React.FC<IProps> = ({ navigation }) => {
             control={control}
             name="title"
             rules={{
-              required: true
+              required: true,
+              maxLength: 20
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
@@ -102,7 +103,12 @@ const FormCreateDiary: React.FC<IProps> = ({ navigation }) => {
               />
             )}
           />
-          {errors.title && <Text style={tw`mt-1 text-xs text-red-500`}>Title is required.</Text>}
+          {errors.title &&
+            <Text style={tw`mt-1 text-xs text-red-500`}>
+              { errors.title.type === 'required' && 'Title is required.' }
+              { errors.title.type === 'maxLength' && 'Must be 20 characters.' }
+            </Text>
+          }
         </View>
         <View style={tw`flex flex-col mb-2`}>
           <Controller

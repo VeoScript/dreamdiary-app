@@ -116,7 +116,13 @@ const DiariesList: React.FC<IProps> = ({ navigation }) => {
                     </View>
                   )}
                 </View>
-                <Text style={[tw`text-[16px] text-[#023047]`, fonts.fontPoppinsLight]}>{ diary.description }</Text>
+                <Text
+                  style={[tw`text-[16px] text-[#023047]`, fonts.fontPoppinsLight]}
+                  numberOfLines={2}
+                  ellipsizeMode='tail'
+                >
+                  { diary.description }
+                </Text>
                 <Text style={[tw`text-[10px] text-[#023047]`, fonts.fontPoppinsLight]}>{moment(new Date(diary.date)).fromNow()}</Text>
               </View>
               <TouchableOpacity

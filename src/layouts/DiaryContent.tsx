@@ -12,7 +12,12 @@ const DiaryContent: React.FC<IProps> = ({ route }) => {
   return (
     <ScrollView style={tw`p-5`}>
       <View style={tw`flex flex-col items-start mb-6`}>
-        <Text style={[tw`text-3xl text-[#FB8500]`, fonts.fontPoppinsBlack]}>{route.params.title}</Text>
+        <View style={tw`flex flex-row items-center justify-between w-full`}>
+          <Text style={[tw`text-3xl text-[#FB8500]`, fonts.fontPoppinsBlack]}>{route.params.title}</Text>
+          <View style={[tw`flex flex-row items-center justify-center w-auto px-2 py-1 rounded-md bg-[#FFB703]`]}>
+            <Text style={[tw`text-[10px] text-[#023047]`, fonts.fontPoppinsLight]}>{ route.params.dream_type }</Text>
+          </View>
+        </View>
         <Text style={[tw`text-[18px] text-[#023047]`, fonts.fontPoppinsSemiBold]}>{route.params.description}</Text>
       </View>
       <View style={tw`flex flex-col items-start`}>
